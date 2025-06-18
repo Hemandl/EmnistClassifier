@@ -1,87 +1,38 @@
-<h1>EMNIST-Klassifikation mit PyTorch</h1>
+# EMNIST-Klassifikation mit PyTorch
 
-Dieses Projekt implementiert einen modularen Klassifikator für den EMNIST-Datensatz unter Verwendung von PyTorch. Es demonstriert Transfer-Learning mit ResNet und eine innovative modulare Architektur zur Verbesserung der Klassifikationsgenauigkeit bei ähnlichen Zeichen.
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch 2.7](https://img.shields.io/badge/PyTorch-2.7-red.svg)](https://pytorch.org/)
 
-<h2>Projektmerkmale</h2>
-🚀 Transfer-Learning mit ResNet18 für EMNIST
+Modulare Klassifikationspipeline für EMNIST mit Transfer-Learning und Hyperparameter-Optimierung.
 
-🧩 Modulare Architektur mit multiplikativer Fusion
+## 🚀 Hauptmerkmale
 
-⚙️ Automatisierte Hyperparameter-Optimierung mit Optuna
+- **Architektur**
+  - 🧩 Multiplikative Fusion von ResNet18 und Kategorie-Klassifikator
+  - 🔀 Temperatur-skalierte Wahrscheinlichkeitsfusion 
+  - 🏗️ Adaptives Layer-Freezing 
 
-📊 Umfassende Evaluierung mit Verwechslungsmatrizen und kategoriespezifischen Metriken
 
+- **Technologiestack**
+  - 🐍 Python 3.12 + PyTorch 2.7
+  - 📊 Optuna für Hyperparameter-Optimierung
+  - 🖼️ Albumentations für Data Augmentation
 
+## 📦 Installation
 
-<h2>Installation</h2>
-<h3>Voraussetzungen</h3>
-Python 3.9
+### Voraussetzungen
+- NVIDIA GPU (empfohlen) mit CUDA 11.8
+- Python 3.12
 
-CUDA 11.7 (für GPU-Beschleunigung)
+### Setup
+```bash
+# Virtuelle Umgebung
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+.\.venv\Scripts\activate   # Windows
 
-PyTorch 
-
-<h3>Setup</h3>
-<h4>Virtuelle Umgebung erstellen und aktivieren:</h4>
-<code>
-bash
-python -m venv venv
-source venv/bin/activate
-</code>
-<h4>Abhängigkeiten installieren:</h4>
-<code>
-bash
+# Abhängigkeiten
 pip install -r requirements.txt
-</code>
-<h4>EMNIST-Datensatz herunterladen (automatisch beim ersten Ausführen)
-</h4>
 
-<h2>Schlüsseltechniken</h2>
-1. Transfer-Learning: Pre-trained ResNet18 mit Feinabstimmung 
-
-2. Hierarchische Klassifikation: Multiplikative Fusion von Teilmodulen 
-
-3. Data Augmentation: Rotation, Translation, Perspektivenverzerrung 
-
-4. Hyperparameter-Optimierung: TPE-Sampler mit Median-Pruning
-
-
-<h2>Verwendung</h2>
-<h3>Hyperparameter-Optimierung</h3>
-
-#### Für modulares Modell
-<code>
-python main.py --phase tune --model_type modular --tune_trials 30
-</code>
-
-#### Für ResNet-Baseline
-<code>
-python main.py --phase tune --model_type resnet --tune_trials 20
-</code>
-
-### Modelltraining
-#### Modulares Modell trainieren
-<code>
-python main.py --phase train --model_type modular --epochs 30
-</code>
-
-#### ResNet-Baseline trainieren
-<code>
-python main.py --phase train --model_type resnet --epochs 30
-</code>
-
-### Evaluation
-#### Modulares Modell evaluieren
-<code>
-python main.py --phase test --model_type modular
-</code>
-
-#### ResNet-Baseline evaluieren
-<code>
-python main.py --phase test --model_type resnet
-</code>
-
-### Visualisierung
-<code>
-jupyter notebook notebooks/visualization.ipynb
-</code>
+# Aufruf
+python main.py --model base --train 
